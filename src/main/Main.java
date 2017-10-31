@@ -20,6 +20,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import logika.IHra;
 
 import logika.*;
@@ -78,6 +80,13 @@ public class Main extends Application {
                 dolniPanel.getChildren().addAll(zadejPrikazLabel, zadejPrikazTextField);
                 borderPane.setBottom(dolniPanel);
                 
+                // mapa
+                FlowPane obrazekPane = new FlowPane();
+                ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa2.jpg"), 400, 400, false, false));
+                
+                obrazekPane.getChildren().add(obrazek);
+                borderPane.setLeft(obrazek);
+                
                 Scene scene = new Scene (borderPane, 1000, 500);
                 
                 primaryStage.setTitle("Moje adventura - ");
@@ -85,8 +94,8 @@ public class Main extends Application {
                 primaryStage.show();
                 
                 
-                
-                
+                zadejPrikazTextField.requestFocus();
+             
              
             }
         });
@@ -99,6 +108,8 @@ public class Main extends Application {
         primaryStage.setTitle("Hello World!");
         primaryStage.setScene(scene);
         primaryStage.show();
+        
+        
     }
     
     public static void main(String[] args) {
