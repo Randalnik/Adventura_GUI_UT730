@@ -292,10 +292,10 @@ public class Prostor {
     }
 
     public Double getPosY() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return posY;
     }
 
     public Double getPosX() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return posX;
     }
 }

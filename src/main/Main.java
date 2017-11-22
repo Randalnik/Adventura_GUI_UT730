@@ -56,10 +56,10 @@ public class Main extends Application {
         centerText.setEditable(false);
         borderPane.setCenter(centerText);
         
-        Label zadejPrikazLabel = new Label("Zadej prikaz");
+        Label zadejPrikazLabel = new Label("Příkaz");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
         
-        TextField zadejPrikazTextField = new TextField("Sem zadej prikaz");
+        TextField zadejPrikazTextField = new TextField("");
         
         zadejPrikazTextField.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -93,9 +93,9 @@ public class Main extends Application {
         //menu adventury
         borderPane.setTop(menu);
         
-        Scene scene = new Scene(borderPane, 800, 650);
+        Scene scene = new Scene(borderPane, 1300, 600);
 
-        primaryStage.setTitle("Moje Adventura");
+        primaryStage.setTitle("Adventura - Přežij Ostrov!");
         primaryStage.setScene(scene);
         primaryStage.show();
         
