@@ -1,7 +1,12 @@
 package logika;
 
+import UI.Mapa;
+import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.List;
+import utils.Observer;
+import utils.Subject;
 
 /**
  *  Class HerniPlan - třída představující mapu a stav adventury.
@@ -14,7 +19,7 @@ import java.util.HashMap;
  *@author     Michael Kolling, Lubos Pavlicek, Jarmila Pavlickova, použil Jakub Skála (skaj06)
  *@version    ZS 2016/2017
  */
-public class HerniPlan {
+public class HerniPlan implements Subject{
 
     private Prostor aktualniProstor;
     private Batoh batoh;
@@ -27,6 +32,7 @@ public class HerniPlan {
     private Vec rotor;
     private Vec manual;
     private Vec start;
+    private List<Observer> listObservers = new ArrayList<Observer>();
 
     /**
      *  Konstruktor který vytváří jednotlivé prostory a propojuje je pomocí východů.
@@ -234,5 +240,21 @@ public class HerniPlan {
     public Vec getStart () {
         return start;
     }
+
+    public void registerObserver(Observer observer) {
+        listObservers.add(observer);
+    }
+
+    public void deleteObserver(Observer observer) {
+        listObservers.remove(observer);
+    }
+
+    @Override
+    public void notifyAllObservers() {
+        for (Observer listObserver : listObservers) {
+            listObserver.update();
+        }
+    }
+
 
 }

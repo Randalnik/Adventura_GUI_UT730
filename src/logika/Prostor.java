@@ -25,6 +25,9 @@ public class Prostor {
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private Map<String, Vec> veci;
     private Map<String, Postava> postavy;
+    
+    private double posX;
+    private double posY;
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
      * před domem"
@@ -36,6 +39,8 @@ public class Prostor {
     public Prostor(String nazev, String popis) {
         this.nazev = nazev;
         this.popis = popis;
+        this.posX = posX;
+        this.posY = posY;
         vychody = new HashSet<>();
         veci = new HashMap<>();
         postavy = new HashMap<>();
@@ -284,5 +289,13 @@ public class Prostor {
             navratExistenci = false;
         }
         return navratExistenci;
+    }
+
+    public Double getPosY() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Double getPosX() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
