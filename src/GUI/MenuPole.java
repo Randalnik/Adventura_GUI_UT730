@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package GUI;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,18 +33,19 @@ public class MenuPole extends MenuBar{
     }
     
     private void init(){
-        Menu menuSoubor = new Menu("Advenura");
+        Menu menuSoubor = new Menu("Adventura");
         
         MenuItem itemNovaHra = new MenuItem("Nová hra");
 //        MenuItem itemNovaHra = new MenuItem(new Image("Nová hra", new ImageView(Main.class.getResourceAsStream("/zdroje/ikona.png"))));
         itemNovaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
         
         MenuItem itemKonec = new MenuItem("Konec");
+        itemKonec.setAccelerator(KeyCombination.keyCombination("Ctrl+X"));
         
         
         Menu menuHelp = new Menu("Help");
         MenuItem itemOProgramu = new MenuItem("O programu");
-        MenuItem itemNapoveda = new MenuItem("Napoveda");
+        MenuItem itemNapoveda = new MenuItem("Nápověda");
         
         
         menuSoubor.getItems().addAll(itemNovaHra, itemKonec);
@@ -57,9 +58,9 @@ public class MenuPole extends MenuBar{
             @Override
             public void handle(ActionEvent event) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setTitle("O Adventure");
-                alert.setHeaderText("Toto je ma adventura");
-                alert.setContentText("Graficka verze adventury");
+                alert.setTitle("O Adventuře");
+                alert.setHeaderText("Tuto adventuru vytvořil Jakub Skála");
+                alert.setContentText("Grafická verze adventury");
                 alert.initOwner(main.getPrimaryStage());
                 alert.showAndWait();
             }
@@ -70,7 +71,7 @@ public class MenuPole extends MenuBar{
             @Override
             public void handle(ActionEvent event) {
                 Stage stage = new Stage();
-                stage.setTitle("Napoveda");
+                stage.setTitle("Nápověda");
                 WebView webview = new WebView();
                 
                 webview.getEngine().load(Main.class.getResource("/zdroje/napoveda.html").toExternalForm());

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UI;
+package GUI;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -43,7 +43,7 @@ public class Mapa extends AnchorPane implements Observer{
         this.setLeftAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosX());
     }
 
-    @Override
+    //@Override
     public void novaHra(IHra hra) {
         hra.getHerniPlan().deleteObserver(this);
         this.hra = hra;

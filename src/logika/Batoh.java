@@ -4,16 +4,20 @@ package logika;
 
 import java.util.Map;
 import java.util.HashMap;
+import utils.Subject;
+import java.util.*;
 
 
 /*******************************************************************************
  * @author    Jakub Skála (skaj06)
  * @version   ZS 2016/2017
  */
-public class Batoh
+public class Batoh implements Subject
 {
     private Map<String, Vec> batoh;
     private int objemBatohu;
+    
+    private List<utils.Observer> listObservers = new ArrayList<> ();
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
@@ -45,6 +49,7 @@ public class Batoh
      */     
     public void vlozVecDoBatohu(Vec neco){
         batoh.put(neco.getNazev(),neco);
+        notifyAllObservers();
     }        
     
     /**
@@ -54,7 +59,9 @@ public class Batoh
      *  @return Vec odebíraná věc
      */ 
     public Vec odeberVecZBatohu(String nazev){
-        return batoh.remove(nazev);
+        Vec result = batoh.remove(nazev);
+        notifyAllObservers();
+        return result;
     }
     
     /**
@@ -100,6 +107,10 @@ public class Batoh
         }
         return vracenyText;
     }
+    
+    public Map<String, Vec> getSeznamVeci(){
+        return batoh;
+    }
 
 
     //== ABSTRAKTNÍ METODY =====================================================
@@ -118,5 +129,20 @@ public class Batoh
     //         Batoh instance = new Batoh();
     //     }
     //     /** @param args Parametry příkazového řádku - nepoužívané. */
-    //     public static void main(String[] args)  {  test();  }
+    //     public static void main(String[] args)  {  test();  }    
+    
+    public void registerObserver(utils.Observer observer) {
+        listObservers.add(observer);
+    }
+
+    public void notifyAllObservers() {
+        for (utils.Observer listObserver : listObservers) {
+            listObserver.update();
+        }
+    }
+
+    @Override
+    public void deleteObserver(utils.Observer observer) {
+        listObservers.remove(observer);
+    }
 }

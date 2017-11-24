@@ -1,6 +1,6 @@
 package logika;
 
-import UI.Mapa;
+import GUI.Mapa;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
@@ -32,6 +32,7 @@ public class HerniPlan implements Subject{
     private Vec rotor;
     private Vec manual;
     private Vec start;
+    
     private List<Observer> listObservers = new ArrayList<Observer>();
 
     /**
@@ -50,41 +51,41 @@ public class HerniPlan implements Subject{
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor jeskyne = new Prostor("Jeskyně","Chladná jeskyně,taková, ve které by ani naši předci z pravěku nepřežili. Jako bonus do ní dopadá pár slunečních paprsků skrze východ do neznáma.");
-        Prostor vesnice = new Prostor("Domorodá vesnice", "Tak přesně takovou vesnici znáš z každého hororového filmu, určitě si ji chceš prohlédnout.");
-        Prostor vodopad = new Prostor("Vodopád s jezírkem","Poklidný vodopád s jezírkem, ve kterém však žije místní hrozba.");
-        Prostor jungle = new Prostor("Hustá džungle","Není to klasický les, je to hustá a skoro nepropustná jungle ve které se nachází i kus rotoru... Jen na něm sedí obrovský pavouk!");
-        Prostor plaz = new Prostor("Písečná pláž","Pláž skoro jak v Miami, akorát místo slunečníků a drinků tu na tebe čekají jiná překvapení."); //je to pláž
+        Prostor jeskyne = new Prostor("Jeskyně","Chladná jeskyně,taková, ve které by ani naši předci z pravěku nepřežili. Jako bonus do ní dopadá pár slunečních paprsků skrze východ do neznáma.", 30, 46);
+        Prostor vesnice = new Prostor("Domorodá vesnice", "Tak přesně takovou vesnici znáš z každého hororového filmu, určitě si ji chceš prohlédnout.", 32, 125);
+        Prostor vodopad = new Prostor("Vodopád s jezírkem","Poklidný vodopád s jezírkem, ve kterém však žije místní hrozba.", 265, 55);
+        Prostor jungle = new Prostor("Hustá džungle","Není to klasický les, je to hustá a skoro nepropustná jungle ve které se nachází i kus rotoru... Jen na něm sedí obrovský pavouk!", 179, 200);
+        Prostor plaz = new Prostor("Písečná pláž","Pláž skoro jak v Miami, akorát místo slunečníků a drinků tu na tebe čekají jiná překvapení.", 100, 266); //je to pláž
 
         //ted se budou vytvářet věci
         //(String nazev, Prostor prostorPouziti,boolean jeCitelna, boolean muzuZvednout, boolean jePouzitelna, boolean jeProhledatelna, Vec vecPouziti, Vec vecZiskanaProhledanim, Vec vecZiskanaPouzitim)
 
-        pirana = new Vec("Piraňa",null, false, false, false, false, null, null, null);
-        Vec ostep = new Vec("Oštěp",vodopad, false, true, true, false, pirana, null, null);
-        Vec banany = new Vec("Banány",vesnice, false, true, true, false, null, null, ostep);
-        Vec bananovnik = new Vec("Banánovník",null, false, false, false, false, null, null, null);
-        Vec lano = new Vec("Lano",jungle,false, false, true, false, bananovnik, null, banany); //po použití nože na lano muzuZvednout = true
-        Vec nuz = new Vec("Nůž",jeskyne,false, true, true, false, lano, null, null);
-        Vec zem = new Vec("Zem",jeskyne,false, false, false, true, null, nuz, null);
-        Vec denik = new Vec("Deník",null, true, true, false, false, null, null, null);
-        Vec mrtvola = new Vec("Mrtvola", null, false, false, false, true, null, denik, null);
-        Vec jezero = new Vec("Jezero",null, false, false, false, false, null, null, null);
-        chram = new Vec("Chrám",vesnice, false, true, false, false, null, null, null); // sebereš chrám a vyhraješ
-        start = new Vec("Start",plaz, false, false, true, false, null, null, null);
-        vrtulnik = new Vec("Vrtulník",plaz, false, false, true, true, null, start, null);
+        pirana = new Vec("Piraňa",null, false, false, false, false, null, null, null, "nuz.jpg");
+        Vec ostep = new Vec("Oštěp",vodopad, false, true, true, false, pirana, null, null, "nuz.jpg");
+        Vec banany = new Vec("Banány",vesnice, false, true, true, false, null, null, ostep, "nuz.jpg");
+        Vec bananovnik = new Vec("Banánovník",null, false, false, false, false, null, null, null, "nuz.jpg");
+        Vec lano = new Vec("Lano",jungle,false, false, true, false, bananovnik, null, banany, "nuz.jpg"); //po použití nože na lano muzuZvednout = true
+        Vec nuz = new Vec("Nůž",jeskyne,false, true, true, false, lano, null, null, "nuz.jpg");
+        Vec zem = new Vec("Zem",jeskyne,false, false, false, true, null, nuz, null, "nuz.jpg");
+        Vec denik = new Vec("Deník",null, true, true, false, false, null, null, null, "nuz.jpg");
+        Vec mrtvola = new Vec("Mrtvola", null, false, false, false, true, null, denik, null, "nuz.jpg");
+        Vec jezero = new Vec("Jezero",null, false, false, false, false, null, null, null, "nuz.jpg");
+        chram = new Vec("Chrám",vesnice, false, true, false, false, null, null, null, "nuz.jpg"); // sebereš chrám a vyhraješ
+        start = new Vec("Start",plaz, false, false, true, false, null, null, null, "nuz.jpg");
+        vrtulnik = new Vec("Vrtulník",plaz, false, false, true, true, null, start, null, "nuz.jpg");
         start.setVecPouziti(vrtulnik);
-        kanystr = new Vec("Kanystr",plaz, false, true, true, false, vrtulnik, null, null);
-        Vec klic = new Vec("Klíč",vesnice, false, true, true, false, chram, null, kanystr);
-        Vec voda = new Vec("Voda",jungle, false, true, true, false, null, null, klic);
-        Vec miska = new Vec("Miska",vodopad, false, true, true, false, jezero, null, voda);
-        pavouk = new Vec("Pavouk",null, false, true, false, false, null, null, null); //sebereš pavouka, umřeš
-        Vec kamen = new Vec("Kámen",jungle, false, true, true, false, pavouk, null, null);
-        manual = new Vec("Manuál",null, true, true, false, true, null, kamen, null); // pokud přečtu pak jePouzitelna = true 
-        Vec balvan = new Vec("Balvan",null, false, false, false, true, null, manual, null);                        
-        rotor = new Vec("Rotor",plaz, false, true, true, false, vrtulnik, null, null);
-        vor = new Vec("Vor",plaz, false, false, true, false, null, null, null); //odpluješ a chsípneš
-        Vec padla = new Vec("Pádla",plaz, false, true, true, false, vor, null, null);        
-        Vec dopis = new Vec("Dopis",null, true, true, false, false, null, null, null);
+        kanystr = new Vec("Kanystr",plaz, false, true, true, false, vrtulnik, null, null, "nuz.jpg");
+        Vec klic = new Vec("Klíč",vesnice, false, true, true, false, chram, null, kanystr, "nuz.jpg");
+        Vec voda = new Vec("Voda",jungle, false, true, true, false, null, null, klic, "nuz.jpg");
+        Vec miska = new Vec("Miska",vodopad, false, true, true, false, jezero, null, voda, "nuz.jpg");
+        pavouk = new Vec("Pavouk",null, false, true, false, false, null, null, null, "nuz.jpg"); //sebereš pavouka, umřeš
+        Vec kamen = new Vec("Kámen",jungle, false, true, true, false, pavouk, null, null, "nuz.jpg");
+        manual = new Vec("Manuál",null, true, true, false, true, null, kamen, null, "nuz.jpg"); // pokud přečtu pak jePouzitelna = true 
+        Vec balvan = new Vec("Balvan",null, false, false, false, true, null, manual, null, "nuz.jpg");                        
+        rotor = new Vec("Rotor",plaz, false, true, true, false, vrtulnik, null, null, "nuz.jpg");
+        vor = new Vec("Vor",plaz, false, false, true, false, null, null, null, "nuz.jpg"); //odpluješ a chsípneš
+        Vec padla = new Vec("Pádla",plaz, false, true, true, false, vor, null, null, "nuz.jpg");        
+        Vec dopis = new Vec("Dopis",null, true, true, false, false, null, null, null, "nuz.jpg");
 
         //Tvoření postav
         Postava saman = new Postava("Šaman", "Hej ty! Mám hlad, sežeň mi něco k jídlu a dostaneš oštěp!");
@@ -149,6 +150,7 @@ public class HerniPlan implements Subject{
      */
     public void setAktualniProstor(Prostor prostor) {
         aktualniProstor = prostor;
+        notifyAllObservers();
     }
 
     /**
@@ -240,11 +242,17 @@ public class HerniPlan implements Subject{
     public Vec getStart () {
         return start;
     }
-
+    
+    public Batoh getBatoh (){
+        return batoh;
+    }
+    
+    @Override
     public void registerObserver(Observer observer) {
         listObservers.add(observer);
     }
 
+    @Override
     public void deleteObserver(Observer observer) {
         listObservers.remove(observer);
     }

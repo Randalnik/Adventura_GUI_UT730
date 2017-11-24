@@ -1,5 +1,7 @@
 package logika;
 
+import javafx.scene.image.Image;
+
 /*******************************************************************************
  * @author    Jakub Skála (skaj06)
  * @version   ZS 2016/2017
@@ -15,13 +17,14 @@ public class Vec
     private boolean jeProhledatelna;
     private Vec vecPouziti;
     private Vec vecZiskanaProhledanim;
-    private Vec vecZiskanaPouzitim;
+    private Vec vecZiskanaPouzitim;    
+    private Image img;
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
      *  Konstruktor ....
      */
-    public Vec(String nazev, Prostor prostorPouziti, boolean jeCitelna, boolean muzuZvednout, boolean jePouzitelna, boolean jeProhledatelna, Vec vecPouziti, Vec vecZiskanaProhledanim, Vec vecZiskanaPouzitim)
+    public Vec(String nazev, Prostor prostorPouziti, boolean jeCitelna, boolean muzuZvednout, boolean jePouzitelna, boolean jeProhledatelna, Vec vecPouziti, Vec vecZiskanaProhledanim, Vec vecZiskanaPouzitim, String imgName)
     {
         this.nazev = nazev;
         this.prostorPouziti = prostorPouziti;
@@ -32,6 +35,8 @@ public class Vec
         this.vecPouziti = vecPouziti;
         this.vecZiskanaProhledanim = vecZiskanaProhledanim;
         this.vecZiskanaPouzitim = vecZiskanaPouzitim;    
+        this.img = new Image(Vec.class.getResourceAsStream("/zdroje/" + imgName), 50, 50, false, false);
+    
     }
 
     //== Nesoukromé metody (instancí i třídy) ======================================
@@ -133,7 +138,9 @@ public class Vec
     public void setVecZiskanaPouzitim(Vec vecZiskanaPouzitim) {
         this.vecZiskanaPouzitim = vecZiskanaPouzitim;
     }
-    
+        public Image getImg() {
+        return img;
+    }
 
     //== Soukromé metody (instancí i třídy) ========================================
 

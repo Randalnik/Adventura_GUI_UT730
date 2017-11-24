@@ -15,6 +15,6 @@ public interface Observer {
     
     void update();
     
-    void novaHra(IHra hra);
+    //void novaHra(IHra hra);
     
 }

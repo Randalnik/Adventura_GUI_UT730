@@ -25,9 +25,10 @@ public class Prostor {
     private Set<Prostor> vychody;   // obsahuje sousední místnosti
     private Map<String, Vec> veci;
     private Map<String, Postava> postavy;
-    
     private double posX;
     private double posY;
+    
+
     /**
      * Vytvoření prostoru se zadaným popisem, např. "kuchyň", "hala", "trávník
      * před domem"
@@ -36,7 +37,7 @@ public class Prostor {
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
      */
-    public Prostor(String nazev, String popis) {
+    public Prostor(String nazev, String popis, double posX, double posY) { // ÚPRAVA
         this.nazev = nazev;
         this.popis = popis;
         this.posX = posX;
@@ -138,7 +139,7 @@ public class Prostor {
      * @return Popis východů - názvů sousedních prostorů
      */
     private String popisVychodu() {
-        String vracenyText = "Východy: | ";
+        String vracenyText = "Východy: ";
         for (Prostor sousedni : vychody) {
             vracenyText += sousedni.getNazev() + " | ";
         }
@@ -156,7 +157,7 @@ public class Prostor {
         if (veci.isEmpty()) {
            vracenyText = "V lokaci |" + nazev + "| nespatřilo tvé oko žádné zajímavé předměty.";
         } else {        
-           vracenyText = "Tvé oko spatřilo tyto předměty: | ";
+           vracenyText = "Tvé oko spatřilo tyto předměty: ";
            for (String nazev : veci.keySet()) {
                vracenyText += nazev + " | ";            
            }           
@@ -174,7 +175,7 @@ public class Prostor {
         if (postavy.isEmpty()) {
            vracenyText = "V lokaci |" + nazev + "| není nic, s čím by se dalo bavit.";
         } else {        
-           vracenyText = "Pro zkrácení dlouhé chvíle si můžeš popovídat s těmito postavami: | ";
+           vracenyText = "Pro zkrácení dlouhé chvíle si můžeš popovídat s těmito postavami: ";
            for (String nazev : postavy.keySet()) {
                vracenyText += nazev + " | ";            
            }           
@@ -298,4 +299,22 @@ public class Prostor {
     public Double getPosX() {
         return posX;
     }
+    
+        // GETRY,SETRY
+    public void setPosX(double posX) {
+        this.posX = posX;
+    }
+
+    public void setPosY(double posY) {
+        this.posY = posY;
+    }
+
+    public double getPosX(double posX) {
+        return posX;
+    }
+
+    public double getPosY(double posY) {
+        return posY;
+    }
+    
 }

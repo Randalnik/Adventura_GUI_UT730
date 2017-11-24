@@ -5,8 +5,10 @@
  */
 package main;
 
-import UI.Mapa;
-import UI.MenuPole;
+
+import GUI.MenuPole;
+import GUI.Mapa;
+import GUI.PravaStrana;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -25,9 +27,9 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import logika.Hra;
-import logika.IHra;
-import uiText.TextoveRozhrani;
+
+import uiText.*;
+import logika.*;
 
 /**
  *
@@ -41,15 +43,21 @@ public class Main extends Application {
     private TextArea centerText;
     private Stage primaryStage;
     
+    private PravaStrana pravaStrana;
+    
+       
     @Override
     public void start(Stage primaryStage) {
-
-        this.primaryStage = primaryStage;
         hra = new Hra();
+        
+        this.primaryStage = primaryStage;
         mapa = new Mapa(hra) {};
         menu = new MenuPole(this);
         
+        pravaStrana = new PravaStrana(hra);
+        
         BorderPane borderPane = new BorderPane();
+        BorderPane zkouska = new BorderPane();
         
         centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
@@ -92,8 +100,10 @@ public class Main extends Application {
         borderPane.setLeft((Node) mapa);
         //menu adventury
         borderPane.setTop(menu);
+        // batoh s obsahem
+        borderPane.setRight(pravaStrana.getPanel());
         
-        Scene scene = new Scene(borderPane, 1300, 600);
+        Scene scene = new Scene(borderPane, 1000,500);
 
         primaryStage.setTitle("Adventura - Přežij Ostrov!");
         primaryStage.setScene(scene);
@@ -132,6 +142,10 @@ public class Main extends Application {
      */
     public Stage getPrimaryStage() {
         return primaryStage;
+    }
+    
+    public PravaStrana getPravaStrana(){
+        return pravaStrana;
     }
 
 }
