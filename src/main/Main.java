@@ -6,9 +6,11 @@
 package main;
 
 
-import GUI.MenuPole;
 import GUI.MapaGUI;
 import GUI.BatohGUI;
+import GUI.VychodyGUI;
+
+
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -31,6 +33,7 @@ import javafx.stage.Stage;
 import uiText.*;
 import logika.*;
 import static javafx.application.Application.launch;
+import javafx.geometry.Orientation;
 import static javafx.application.Application.launch;
 import static javafx.application.Application.launch;
 
@@ -40,24 +43,30 @@ import static javafx.application.Application.launch;
  */
 public class Main extends Application {
 
-    private MapaGUI mapa;
+    
     private MenuPole menu;
     private IHra hra;
     private TextArea centerText;
     private Stage primaryStage;
     
-    private BatohGUI pravaStrana;
+    private MapaGUI mapa;
+    private BatohGUI obsahBatoh;
+    private VychodyGUI vychody;
     
+    public TextArea getCenterText() {
+        return centerText;
+    }
        
     @Override
     public void start(Stage primaryStage) {
         hra = new Hra();
         
         this.primaryStage = primaryStage;
+        
         mapa = new MapaGUI(hra) {};
         menu = new MenuPole(this);
-        
-        pravaStrana = new BatohGUI(hra);
+        vychody = new VychodyGUI(hra, this);
+        obsahBatoh = new BatohGUI(hra, this);
         
         BorderPane borderPane = new BorderPane();
         
@@ -103,8 +112,13 @@ public class Main extends Application {
         //menu adventury
         borderPane.setTop(menu);
         // batoh s obsahem
-        borderPane.setRight(pravaStrana.getPanel());
+        FlowPane pravyPanel = new FlowPane(Orientation.VERTICAL);
+        pravyPanel.getChildren().addAll(obsahBatoh, vychody);
         
+        borderPane.setRight(pravyPanel);
+        
+        
+        // BASE SCENE
         Scene scene = new Scene(borderPane, 1500,500);
 
         primaryStage.setTitle("Adventura - Přežij Ostrov!");
@@ -137,7 +151,8 @@ public class Main extends Application {
         centerText.setText(hra.vratUvitani());
         //to same pro vsechny observery
         mapa.novaHra(hra);
-        pravaStrana.novaHra(hra);
+        obsahBatoh.novaHra(hra);
+        vychody.novaHra(hra);
     }
 
     /**
@@ -148,7 +163,8 @@ public class Main extends Application {
     }
     
     public BatohGUI getPravaStrana(){
-        return pravaStrana;
+        return obsahBatoh;
     }
+    
 
 }
