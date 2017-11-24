@@ -7,14 +7,12 @@ package utils;
 
 /**
  *
- * @author xzenj02
+ * @author xzenj02, použil Jakub Skála (skaj06)
  */
 public interface Subject {
     
     void registerObserver(Observer observer);
-    
-    void deleteObserver (Observer observer);
-    
+    void deleteObserver(Observer observer);
     void notifyAllObservers();
     
 }

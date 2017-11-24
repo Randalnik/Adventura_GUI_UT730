@@ -22,7 +22,7 @@ import main.Main;
  *
  * @author Jakub Skála
  */
-public class PravaStrana implements Observer {
+public class BatohGUI implements Observer {
     
     private IHra hra;
     private ListView <AnchorPane> listBatohu;
@@ -37,7 +37,7 @@ public class PravaStrana implements Observer {
     *konstruktor třidy PravaStrana
     *@param hra instance tridy implementujici rozhrani IHra
     */
-    public PravaStrana(IHra hra) {
+    public BatohGUI(IHra hra) {
         this.hra = hra;
         hra.getHerniPlan().getBatoh().registerObserver(this);
         spust();
@@ -74,10 +74,20 @@ public class PravaStrana implements Observer {
        
     }
     
-    
     public FlowPane getPanel(){
         return pane;
     }
-
     
+    // POKUS O znovuobnovení batohu
+    //@Override
+    public void novaHra(IHra hra) {
+        
+        hra.getHerniPlan().getBatoh().deleteObserver(this);
+        hra.getHerniPlan().deleteObserver(this);
+        this.hra = hra;
+        hra.getHerniPlan().getBatoh().registerObserver(this);
+        hra.getHerniPlan().registerObserver(this);
+        update();
+    }
+
 }

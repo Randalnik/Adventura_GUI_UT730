@@ -19,12 +19,12 @@ import utils.ObserverNovaHra;
  *
  * @author xzenj02
  */
-public class Mapa extends AnchorPane implements Observer{
+public class MapaGUI extends AnchorPane implements Observer{
 
     private IHra hra;
     private Circle tecka;
     
-    public Mapa(IHra hra){
+    public MapaGUI(IHra hra){
         this.hra = hra;
         hra.getHerniPlan().registerObserver(this);
         init();
@@ -43,7 +43,7 @@ public class Mapa extends AnchorPane implements Observer{
         this.setLeftAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosX());
     }
 
-    //@Override
+    
     public void novaHra(IHra hra) {
         hra.getHerniPlan().deleteObserver(this);
         this.hra = hra;

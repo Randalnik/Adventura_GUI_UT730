@@ -7,8 +7,8 @@ package main;
 
 
 import GUI.MenuPole;
-import GUI.Mapa;
-import GUI.PravaStrana;
+import GUI.MapaGUI;
+import GUI.BatohGUI;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
@@ -30,6 +30,9 @@ import javafx.stage.Stage;
 
 import uiText.*;
 import logika.*;
+import static javafx.application.Application.launch;
+import static javafx.application.Application.launch;
+import static javafx.application.Application.launch;
 
 /**
  *
@@ -37,13 +40,13 @@ import logika.*;
  */
 public class Main extends Application {
 
-    private Mapa mapa;
+    private MapaGUI mapa;
     private MenuPole menu;
     private IHra hra;
     private TextArea centerText;
     private Stage primaryStage;
     
-    private PravaStrana pravaStrana;
+    private BatohGUI pravaStrana;
     
        
     @Override
@@ -51,13 +54,12 @@ public class Main extends Application {
         hra = new Hra();
         
         this.primaryStage = primaryStage;
-        mapa = new Mapa(hra) {};
+        mapa = new MapaGUI(hra) {};
         menu = new MenuPole(this);
         
-        pravaStrana = new PravaStrana(hra);
+        pravaStrana = new BatohGUI(hra);
         
         BorderPane borderPane = new BorderPane();
-        BorderPane zkouska = new BorderPane();
         
         centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
@@ -103,7 +105,7 @@ public class Main extends Application {
         // batoh s obsahem
         borderPane.setRight(pravaStrana.getPanel());
         
-        Scene scene = new Scene(borderPane, 1000,500);
+        Scene scene = new Scene(borderPane, 1500,500);
 
         primaryStage.setTitle("Adventura - Přežij Ostrov!");
         primaryStage.setScene(scene);
@@ -135,6 +137,7 @@ public class Main extends Application {
         centerText.setText(hra.vratUvitani());
         //to same pro vsechny observery
         mapa.novaHra(hra);
+        pravaStrana.novaHra(hra);
     }
 
     /**
@@ -144,7 +147,7 @@ public class Main extends Application {
         return primaryStage;
     }
     
-    public PravaStrana getPravaStrana(){
+    public BatohGUI getPravaStrana(){
         return pravaStrana;
     }
 

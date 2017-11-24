@@ -112,25 +112,6 @@ public class Batoh implements Subject
         return batoh;
     }
 
-
-    //== ABSTRAKTNÍ METODY =====================================================
-    //== PŘÍSTUPOVÉ METODY VLASTNOSTÍ INSTANCÍ =================================
-    //== OSTATNÍ NESOUKROMÉ METODY INSTANCÍ ====================================
-    //== SOUKROMÉ A POMOCNÉ METODY TŘÍDY =======================================
-    //== SOUKROMÉ A POMOCNÉ METODY INSTANCÍ ====================================
-    //== INTERNÍ DATOVÉ TYPY ===================================================
-    //== TESTOVACÍ METODY A TŘÍDY ==============================================
-    //
-    //     /********************************************************************
-    //      * Testovací metoda.
-    //      */
-    //     public static void test()
-    //     {
-    //         Batoh instance = new Batoh();
-    //     }
-    //     /** @param args Parametry příkazového řádku - nepoužívané. */
-    //     public static void main(String[] args)  {  test();  }    
-    
     public void registerObserver(utils.Observer observer) {
         listObservers.add(observer);
     }
