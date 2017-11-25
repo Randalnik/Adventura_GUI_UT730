@@ -14,6 +14,7 @@ public class PrikazCti implements IPrikaz
     private static final String NAZEV = "cti";
     private HerniPlan plan;
     private Batoh batoh;
+    
     //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
@@ -77,7 +78,12 @@ public class PrikazCti implements IPrikaz
 
         if (parametry.length > 1) { 
             vracenyText =  "Nemusíš zadávat tolik parametrů.";
-        }                                                                         
+        } 
+        
+//        if (Vec.jeCitelna() = false){
+//            vracenyText = "Tento předmět nelze přečíst.";
+//        }
+        
         return vracenyText;
     }
 

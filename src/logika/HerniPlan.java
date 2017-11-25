@@ -60,31 +60,31 @@ public class HerniPlan implements Subject{
         //ted se budou vytvářet věci
         //(String nazev, Prostor prostorPouziti,boolean jeCitelna, boolean muzuZvednout, boolean jePouzitelna, boolean jeProhledatelna, Vec vecPouziti, Vec vecZiskanaProhledanim, Vec vecZiskanaPouzitim)
 
-        pirana = new Vec("Piraňa",null, false, false, false, false, null, null, null, "pirana.jpg");
-        Vec ostep = new Vec("Oštěp",vodopad, false, true, true, false, pirana, null, null, "ostep.jpg");
-        Vec banany = new Vec("Banány",vesnice, false, true, true, false, null, null, ostep, "banany.jpg");
-        Vec bananovnik = new Vec("Banánovník",null, false, false, false, false, null, null, null, "bananovnik.jpg");
-        Vec lano = new Vec("Lano",jungle,false, false, true, false, bananovnik, null, banany, "lano.jpg"); //po použití nože na lano muzuZvednout = true
-        Vec nuz = new Vec("Nůž",jeskyne,false, true, true, false, lano, null, null, "nuz.jpg");
-        Vec zem = new Vec("Zem",jeskyne,false, false, false, true, null, nuz, null, "nuz.jpg");
-        Vec denik = new Vec("Deník",null, true, true, false, false, null, null, null, "denik.jpg");
-        Vec mrtvola = new Vec("Mrtvola", null, false, false, false, true, null, denik, null, "mrtvola.jpg");
-        Vec jezero = new Vec("Jezero",null, false, false, false, false, null, null, null, "jezero.jpg");
-        chram = new Vec("Chrám",vesnice, false, true, false, false, null, null, null, "chram.jpg"); // sebereš chrám a vyhraješ
-        start = new Vec("Start",plaz, false, false, true, false, null, null, null, "start.jpg");
-        vrtulnik = new Vec("Vrtulník",plaz, false, false, true, true, null, start, null, "vrtulnik.jpg");
+        pirana = new Vec("Piraňa",null, false, false, false, false, null, null, null, "pirana.png");
+        Vec ostep = new Vec("Oštěp",vodopad, false, true, true, false, pirana, null, null, "ostep.png");
+        Vec banany = new Vec("Banány",vesnice, false, true, true, false, null, null, ostep, "banany.png");
+        Vec bananovnik = new Vec("Banánovník",null, false, false, false, false, null, null, null, "bananovnik.png");
+        Vec lano = new Vec("Lano",jungle,false, false, true, false, bananovnik, null, banany, "lano.png"); //po použití nože na lano muzuZvednout = true
+        Vec nuz = new Vec("Nůž",jeskyne,false, true, true, false, lano, null, null, "nuz.png");
+        Vec zem = new Vec("Zem",jeskyne,false, false, false, true, null, nuz, null, "nuz.png");
+        Vec denik = new Vec("Deník",null, true, true, false, false, null, null, null, "denik.png");
+        Vec mrtvola = new Vec("Mrtvola", null, false, false, false, true, null, denik, null, "mrtvola.png");
+        Vec jezero = new Vec("Jezero",null, false, false, false, false, null, null, null, "jezero.png");
+        chram = new Vec("Chrám",vesnice, false, true, false, false, null, null, null, "chram.png"); // sebereš chrám a vyhraješ
+        start = new Vec("Start",plaz, false, false, true, false, null, null, null, "start.png");
+        vrtulnik = new Vec("Vrtulník",plaz, false, false, true, true, null, start, null, "vrtulnik.png");
         start.setVecPouziti(vrtulnik);
-        kanystr = new Vec("Kanystr",plaz, false, true, true, false, vrtulnik, null, null, "kanystr.jpg");
-        Vec klic = new Vec("Klíč",vesnice, false, true, true, false, chram, null, kanystr, "klic.jpg");
+        kanystr = new Vec("Kanystr",plaz, false, true, true, false, vrtulnik, null, null, "kanystr.png");
+        Vec klic = new Vec("Klíč",vesnice, false, true, true, false, chram, null, kanystr, "klic.png");
         Vec voda = new Vec("Voda",jungle, false, true, true, false, null, null, klic, "voda.png");
-        Vec miska = new Vec("Miska",vodopad, false, true, true, false, jezero, null, voda, "miska.jpg");
-        pavouk = new Vec("Pavouk",null, false, true, false, false, null, null, null, "pavouk.jpg"); //sebereš pavouka, umřeš
-        Vec kamen = new Vec("Kámen",jungle, false, true, true, false, pavouk, null, null, "kamen.jpg");
-        manual = new Vec("Manuál",null, true, true, false, true, null, kamen, null, "manual.jpg"); // pokud přečtu pak jePouzitelna = true 
-        Vec balvan = new Vec("Balvan",null, false, false, false, true, null, manual, null, "balvan.jpg");                        
-        rotor = new Vec("Rotor",plaz, false, true, true, false, vrtulnik, null, null, "rotor.jpg");
-        vor = new Vec("Vor",plaz, false, false, true, false, null, null, null, "vor.jpg"); //odpluješ a chsípneš
-        Vec padla = new Vec("Pádla",plaz, false, true, true, false, vor, null, null, "padla.jpg");        
+        Vec miska = new Vec("Miska",vodopad, false, true, true, false, jezero, null, voda, "miska.png");
+        pavouk = new Vec("Pavouk",null, false, true, false, false, null, null, null, "pavouk.png"); //sebereš pavouka, umřeš
+        Vec kamen = new Vec("Kámen",jungle, false, true, true, false, pavouk, null, null, "kamen.png");
+        manual = new Vec("Manuál",null, true, true, false, true, null, kamen, null, "manual.png"); // pokud přečtu pak jePouzitelna = true 
+        Vec balvan = new Vec("Balvan",null, false, false, false, true, null, manual, null, "balvan.png");                        
+        rotor = new Vec("Rotor",plaz, false, true, true, false, vrtulnik, null, null, "rotor.png");
+        vor = new Vec("Vor",plaz, false, false, true, false, null, null, null, "vor.png"); //odpluješ a chsípneš
+        Vec padla = new Vec("Pádla",plaz, false, true, true, false, vor, null, null, "padla.png");        
         Vec dopis = new Vec("Dopis",null, true, true, false, false, null, null, null, "dopis.png");
 
         //Tvoření postav

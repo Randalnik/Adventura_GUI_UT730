@@ -11,7 +11,7 @@ public class Vec
     //== Datové atributy (statické i instancí)======================================
     private String nazev;    
     private Prostor prostorPouziti;
-    private boolean jeCitelna;
+    boolean jeCitelna;
     private boolean muzuZvednout;
     private boolean jePouzitelna;
     private boolean jeProhledatelna;
@@ -138,10 +138,16 @@ public class Vec
     public void setVecZiskanaPouzitim(Vec vecZiskanaPouzitim) {
         this.vecZiskanaPouzitim = vecZiskanaPouzitim;
     }
+    
+    public void setImg(Image img){
+        this.img = img;
+       }
+    
         public Image getImg() {
         return img;
     }
-
+        
+    
     //== Soukromé metody (instancí i třídy) ========================================
 
 }

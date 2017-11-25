@@ -9,6 +9,7 @@ package main;
 import GUI.MapaGUI;
 import GUI.BatohGUI;
 import GUI.VychodyGUI;
+import GUI.ObjektyGUI;
 
 
 import javafx.application.Application;
@@ -52,6 +53,7 @@ public class Main extends Application {
     private MapaGUI mapa;
     private BatohGUI obsahBatoh;
     private VychodyGUI vychody;
+    private ObjektyGUI objekty;
     
     public TextArea getCenterText() {
         return centerText;
@@ -67,6 +69,7 @@ public class Main extends Application {
         menu = new MenuPole(this);
         vychody = new VychodyGUI(hra, this);
         obsahBatoh = new BatohGUI(hra, this);
+        objekty = new ObjektyGUI(hra, this);
         
         BorderPane borderPane = new BorderPane();
         
@@ -113,13 +116,13 @@ public class Main extends Application {
         borderPane.setTop(menu);
         // batoh s obsahem
         FlowPane pravyPanel = new FlowPane(Orientation.VERTICAL);
-        pravyPanel.getChildren().addAll(obsahBatoh, vychody);
+        pravyPanel.getChildren().addAll(objekty, obsahBatoh, vychody);
         
         borderPane.setRight(pravyPanel);
         
         
         // BASE SCENE
-        Scene scene = new Scene(borderPane, 1500,500);
+        Scene scene = new Scene(borderPane, 1300,620);
 
         primaryStage.setTitle("Adventura - Přežij Ostrov!");
         primaryStage.setScene(scene);
@@ -151,6 +154,7 @@ public class Main extends Application {
         centerText.setText(hra.vratUvitani());
         //to same pro vsechny observery
         mapa.novaHra(hra);
+        objekty.novaHra(hra);
         obsahBatoh.novaHra(hra);
         vychody.novaHra(hra);
     }
