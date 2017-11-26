@@ -28,7 +28,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 /*******************************************************************************
- * Instance třídy {@code ProstorUI} představují ...
  *
  * @author    Jakub Skála
  * @version   1.0
@@ -59,7 +58,7 @@ public class OsobyGUI extends AnchorPane implements Observer {
         vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(10);
-        vbox.setMinWidth(275);
+        vbox.setMinWidth(100);
 
         // Label
         Label zadejPrikazLabel = new Label("Postavy v prostoru:");
@@ -93,7 +92,7 @@ public class OsobyGUI extends AnchorPane implements Observer {
             HBox hbox = new HBox();
             hbox.setPadding(new Insets(0));
             hbox.setSpacing(10);
-            hbox.setMinWidth(275);
+            hbox.setMinWidth(100);
         
             ImageView obrazek = new ImageView(osoba.getImage());
             

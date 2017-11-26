@@ -21,7 +21,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -30,7 +29,6 @@ import javafx.scene.text.FontWeight;
 import logika.Prostor;
 
 /*******************************************************************************
- * Instance třídy {@code ProstorUI} představují ...
  *
  * @author    Jakub Skála
  * @version   1.0
@@ -69,7 +67,7 @@ public class ObjektyGUI extends AnchorPane implements Observer {
         vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(10);
-        vbox.setMinWidth(275);
+        vbox.setMinWidth(100);
 
         // Label
         Label zadejPrikazLabel = new Label("Objekty v prostoru:");
@@ -104,7 +102,7 @@ public class ObjektyGUI extends AnchorPane implements Observer {
             HBox hbox = new HBox();
             hbox.setPadding(new Insets(0));
             hbox.setSpacing(10);
-            hbox.setMinWidth(275);
+            hbox.setMinWidth(100);
         
             ImageView obrazek = new ImageView(vec.getImg());
             
@@ -158,7 +156,7 @@ public class ObjektyGUI extends AnchorPane implements Observer {
             });
             
             if(jdeZvednout){
-                hbox.getChildren().addAll(obrazek, btn, hled);
+                hbox.getChildren().addAll(obrazek, btn); 
             }
             else{
                 hbox.getChildren().addAll(obrazek, hled);

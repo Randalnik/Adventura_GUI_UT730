@@ -11,23 +11,21 @@ import utils.Observer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import main.Main;
 
-/**
+/*******************************************************************************
  *
- * @author Jakub Skála
+ * @author    Jakub Skála
+ * @version   1.0
  */
 public class VychodyGUI extends AnchorPane implements Observer {
     
@@ -52,7 +50,7 @@ public class VychodyGUI extends AnchorPane implements Observer {
         vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(10);
-        vbox.setMinWidth(250);
+        vbox.setMinWidth(100);
 
         // Label
         Label label = new Label("Východy:");
@@ -75,9 +73,9 @@ public class VychodyGUI extends AnchorPane implements Observer {
         vbox.getChildren().removeAll(buttons);
         buttons.clear();
         
-        Collection<Prostor> odlety = hra.getHerniPlan().getAktualniProstor().getVychody();
+        Collection<Prostor> vychody = hra.getHerniPlan().getAktualniProstor().getVychody();
         
-        for (Prostor prostor: odlety) {
+        for (Prostor prostor: vychody) {
             
             Button btn = new Button(prostor.getNazev());
             vbox.getChildren().add(btn);

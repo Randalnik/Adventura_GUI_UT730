@@ -5,8 +5,6 @@
  */
 package GUI;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -15,11 +13,11 @@ import javafx.scene.shape.Circle;
 import logika.IHra;
 import main.Main;
 import utils.Observer;
-import utils.ObserverNovaHra;
 
-/**
+/*******************************************************************************
  *
- * @author Jakub Skála
+ * @author    Jakub Skála
+ * @version   1.0
  */
 public class MapaGUI extends AnchorPane implements Observer{
 

@@ -5,7 +5,6 @@
  */
 package GUI;
 
-import logika.Hra;
 import logika.IHra;
 import logika.Vec;
 import main.Main;
@@ -17,25 +16,18 @@ import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Paint;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 
 /*******************************************************************************
- * Instance třídy {@code RaketaUI} představují ...
  *
  * @author    Jakub Skála
  * @version   1.0
@@ -66,7 +58,7 @@ public class BatohGUI extends AnchorPane implements Observer {
         vbox = new VBox();
         vbox.setPadding(new Insets(10));
         vbox.setSpacing(10);
-        vbox.setMinWidth(275);
+        vbox.setMinWidth(100);
 
         // Label
         Label zadejPrikazLabel = new Label("Tvoje vybavení:");
@@ -95,11 +87,13 @@ public class BatohGUI extends AnchorPane implements Observer {
         
           for (String polozka : polozky.keySet()) {
             Vec vec = polozky.get(polozka);
+            
+            boolean jeCitelna = vec.jeCitelna();
         
             HBox hbox = new HBox();
             hbox.setPadding(new Insets(0));
             hbox.setSpacing(10);
-            hbox.setMinWidth(275);
+            hbox.setMinWidth(100);
             
             ImageView obrazek = new ImageView(vec.getImg());
             
@@ -137,7 +131,12 @@ public class BatohGUI extends AnchorPane implements Observer {
                 }
             });
             
-            hbox.getChildren().addAll(obrazek, btn, btn1);
+            if (jeCitelna) {
+                hbox.getChildren().addAll(obrazek, btn, btn1);
+            }
+            else {
+                hbox.getChildren().addAll(obrazek, btn);
+            }
             radky.add(hbox);
             
             i++;

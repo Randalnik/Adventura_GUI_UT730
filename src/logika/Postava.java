@@ -25,7 +25,7 @@ public class Postava
     {
         this.nazev = nazev;
         this.popis = popis;
-        this.image = new Image(Vec.class.getResourceAsStream("/zdroje/" + image), 100, 100, false, false);
+        this.image = new Image(Vec.class.getResourceAsStream("/zdroje/" + image), 75, 75, false, false);
         
     }
     

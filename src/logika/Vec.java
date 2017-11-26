@@ -35,7 +35,7 @@ public class Vec
         this.vecPouziti = vecPouziti;
         this.vecZiskanaProhledanim = vecZiskanaProhledanim;
         this.vecZiskanaPouzitim = vecZiskanaPouzitim;    
-        this.img = new Image(Vec.class.getResourceAsStream("/zdroje/" + imgName), 100, 100, false, false);
+        this.img = new Image(Vec.class.getResourceAsStream("/zdroje/" + imgName), 75, 75, false, false);
     
     }
 

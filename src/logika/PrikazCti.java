@@ -56,7 +56,7 @@ public class PrikazCti implements IPrikaz
                 if (vecKPrecteni instanceof Vec) {
                     switch (nazevVeciKPrecteni) {
                         case "Deník":
-                            vracenyText =  "\nUž nikdy nebudu zkoušet létat s novým vrtulníkem do neznáma!\nPro případ, že by někoho potkalo to samé, co mě, jsem v rychlosti sepsal manuál. Obsahuje základní informace o tom, jak zprovoznit vrtulník a bezpečně odletět.\nNajdete ho poblíž vodopádu. Ať vám slouží, mě nepomohl.\n";
+                            vracenyText =  "Už nikdy nebudu zkoušet létat s novým vrtulníkem do neznáma!Pro případ, že by někoho potkalo to samé, co mě, jsem v rychlosti sepsal manuál. Obsahuje základní informace o tom, jak zprovoznit vrtulník a bezpečně odletět.Najdete ho poblíž vodopádu. Ať vám slouží, mě nepomohl.";
                             break; 
                         
                         case "Manuál":

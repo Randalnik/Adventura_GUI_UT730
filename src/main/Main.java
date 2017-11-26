@@ -14,7 +14,6 @@ import GUI.OsobyGUI;
 
 
 import javafx.application.Application;
-import static javafx.application.Application.launch;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -23,13 +22,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import uiText.*;
@@ -77,7 +73,9 @@ public class Main extends Application {
         centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
         centerText.setEditable(false);
+        centerText.setMinWidth(100); //upravení šířky hlavního textové pole
         borderPane.setCenter(centerText);
+        
         
         Label zadejPrikazLabel = new Label("Příkaz");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));

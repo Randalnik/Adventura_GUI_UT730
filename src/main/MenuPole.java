@@ -15,9 +15,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
-import logika.Hra;
-import logika.IHra;
-import main.Main;
+
 
 /**
  *
@@ -59,7 +57,7 @@ public class MenuPole extends MenuBar{
             public void handle(ActionEvent event) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("O Adventuře");
-                alert.setHeaderText("Tuto adventuru vytvořil Jakub Skála (ska06)");
+                alert.setHeaderText("Tuto adventuru vytvořil Jakub Skála (skaj06)");
                 alert.setContentText("Grafická verze adventury vytvořená v roce 2017");
                 alert.initOwner(main.getPrimaryStage());
                 alert.showAndWait();
@@ -76,7 +74,7 @@ public class MenuPole extends MenuBar{
                 
                 webview.getEngine().load(Main.class.getResource("/zdroje/napoveda.html").toExternalForm());
                 
-                stage.setScene(new Scene(webview, 500, 500));
+                stage.setScene(new Scene(webview, 1000, 600));
                 stage.show();
             }
         });
