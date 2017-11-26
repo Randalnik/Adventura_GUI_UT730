@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -17,7 +19,7 @@ import utils.ObserverNovaHra;
 
 /**
  *
- * @author xzenj02
+ * @author Jakub Skála
  */
 public class MapaGUI extends AnchorPane implements Observer{
 
@@ -31,18 +33,31 @@ public class MapaGUI extends AnchorPane implements Observer{
     }
     
     private void init(){
-        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"),300,300,false,false));
+        ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"),300,500,false,false));
         tecka = new Circle(10, Paint.valueOf("red"));
         this.getChildren().addAll(obrazek, tecka);
         update();
     }
     
+//    private void show() {
+//        
+//        Alert alert = new Alert(Alert.AlertType.NONE);
+//        alert.setTitle("Mapa");
+//        alert.setGraphic(this);
+//        alert.getDialogPane().setMinWidth(520);
+//        alert.getDialogPane().setMaxWidth(520);
+//        alert.getDialogPane().getButtonTypes().add(ButtonType.OK);
+//
+//        alert.showAndWait();
+//    }
+    
     @Override
     public void update() {
         this.setTopAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosY());
         this.setLeftAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosX());
+        
+//        show();
     }
-
     
     public void novaHra(IHra hra) {
         hra.getHerniPlan().deleteObserver(this);

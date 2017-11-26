@@ -32,6 +32,7 @@ public class HerniPlan implements Subject{
     private Vec rotor;
     private Vec manual;
     private Vec start;
+    private Map<String, Prostor> prostory;
     
     private List<Observer> listObservers = new ArrayList<Observer>();
 
@@ -40,6 +41,7 @@ public class HerniPlan implements Subject{
      *  Jako výchozí aktuální prostor nastaví halu.
      */
     public HerniPlan(Batoh batoh) {
+        prostory = new HashMap<>();
         zalozProstoryHry();
         this.batoh = batoh;
 
@@ -56,9 +58,15 @@ public class HerniPlan implements Subject{
         Prostor vodopad = new Prostor("Vodopád s jezírkem","Poklidný vodopád s jezírkem, ve kterém však žije místní hrozba.", 265, 55);
         Prostor jungle = new Prostor("Hustá džungle","Není to klasický les, je to hustá a skoro nepropustná jungle ve které se nachází i kus rotoru... Jen na něm sedí obrovský pavouk!", 179, 200);
         Prostor plaz = new Prostor("Písečná pláž","Pláž skoro jak v Miami, akorát místo slunečníků a drinků tu na tebe čekají jiná překvapení.", 100, 266); //je to pláž
-
+        
+        prostory.put("jeskyne", jeskyne);
+        prostory.put("vesnice", vesnice);
+        prostory.put("vodopad", vodopad);
+        prostory.put("jungle", jungle);
+        prostory.put("plaz", plaz);
+        
         //ted se budou vytvářet věci
-        //(String nazev, Prostor prostorPouziti,boolean jeCitelna, boolean muzuZvednout, boolean jePouzitelna, boolean jeProhledatelna, Vec vecPouziti, Vec vecZiskanaProhledanim, Vec vecZiskanaPouzitim)
+        //(String nazev, Prostor prostorPouziti,boolean jeCitelna, boolean muzuZvednout, boolean jePouzitelna, boolean jeProhledatelna, Vec vecPouziti, Vec vecZiskanaProhledanim, Vec vecZiskanaPouzitim, Image img)
 
         pirana = new Vec("Piraňa",null, false, false, false, false, null, null, null, "pirana.png");
         Vec ostep = new Vec("Oštěp",vodopad, false, true, true, false, pirana, null, null, "ostep.png");
@@ -66,7 +74,7 @@ public class HerniPlan implements Subject{
         Vec bananovnik = new Vec("Banánovník",null, false, false, false, false, null, null, null, "bananovnik.png");
         Vec lano = new Vec("Lano",jungle,false, false, true, false, bananovnik, null, banany, "lano.png"); //po použití nože na lano muzuZvednout = true
         Vec nuz = new Vec("Nůž",jeskyne,false, true, true, false, lano, null, null, "nuz.png");
-        Vec zem = new Vec("Zem",jeskyne,false, false, false, true, null, nuz, null, "nuz.png");
+        Vec zem = new Vec("Zem",jeskyne,false, false, false, true, null, nuz, null, "denik.png");
         Vec denik = new Vec("Deník",null, true, true, false, false, null, null, null, "denik.png");
         Vec mrtvola = new Vec("Mrtvola", null, false, false, false, true, null, denik, null, "mrtvola.png");
         Vec jezero = new Vec("Jezero",null, false, false, false, false, null, null, null, "jezero.png");
@@ -88,8 +96,8 @@ public class HerniPlan implements Subject{
         Vec dopis = new Vec("Dopis",null, true, true, false, false, null, null, null, "dopis.png");
 
         //Tvoření postav
-        Postava saman = new Postava("Šaman", "Hej ty! Mám hlad, sežeň mi něco k jídlu a dostaneš oštěp!");
-        Postava opice = new Postava("Mluvící opice", "Hu Hu! Umírám žízní, dones mi něco k pití a odměna tě nemine. Vrať se a pak pokecáme.");
+        Postava saman = new Postava("Šaman", "Hej ty! Mám hlad, sežeň mi něco k jídlu a dostaneš oštěp!", "saman.png");
+        Postava opice = new Postava("Mluvící opice", "Hu Hu! Umírám žízní, dones mi něco k pití a odměna tě nemine. Vrať se a pak pokecáme.", "opice.png");
 
         // přiřazují se průchody mezi prostory (sousedící prostory)
         jeskyne.setVychod(vesnice);
@@ -131,6 +139,10 @@ public class HerniPlan implements Subject{
         aktualniProstor = jeskyne;  // hra začíná v jeskyni      
     }
 
+    public Map<String, Prostor> getProstory() {
+        return prostory;
+    }
+
     /**
      *  Metoda vrací odkaz na aktuální prostor, ve ktetém se hráč právě nachází.
      *
@@ -153,11 +165,7 @@ public class HerniPlan implements Subject{
         notifyAllObservers();
     }
 
-    /**
-     *  Metoda ověřuje, zda je drak živý. Pokud ne, hráč vyhrál - vrátí true.  
-     *  Jedná se o ukončení hry výhrou.
-     *  @return    boolean konec hry
-     */
+
     // Dvě výhry (vrtulník + chrám)
     public int vyhra(){
         int vyhra = 0;
@@ -170,12 +178,7 @@ public class HerniPlan implements Subject{
         return vyhra;
     }
 
-    /**
-     *  Metoda ověřuje, zda král, šelma, čarodějnice nebo stráž jsou živý. Pokud ne, hráč prohrál.
-     *  Jedná se o ukončení hry hráčovým počínáním ve hře. V podmínce jsou nastaveny podmínky konců, které mohou nastat.
-     *  Jedná se o ukončení hry prohrou.
-     *  @return    boolean konec hry
-     */
+ 
     // 4 prohry (Piraňa, pavouk, neopravený vrtulní, vor)
     public int prohra(){
         int prohra = 0;
@@ -243,6 +246,9 @@ public class HerniPlan implements Subject{
         return start;
     }
     
+    /** Metoda vrací věc v prostoru
+     * @return Batoh - batoh
+     */
     public Batoh getBatoh (){
         return batoh;
     }

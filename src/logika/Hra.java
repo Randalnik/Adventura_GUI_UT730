@@ -111,10 +111,12 @@ public class Hra implements IHra {
             if(herniPlan.vyhra() == 5 || herniPlan.vyhra() == 6){
                 konecHry = true;
                 konceHry = herniPlan.vyhra();
+                textKVypsani += "\n\n" + vratEpilog();
             }
             if(herniPlan.prohra() == 1 || herniPlan.prohra() == 2 || herniPlan.prohra() == 3 || herniPlan.prohra() == 4){
                 konecHry = true;
                 konceHry = herniPlan.prohra();
+                textKVypsani += "\n\n" + vratEpilog();
             }
         }
             else {

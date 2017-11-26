@@ -91,21 +91,6 @@ public class VychodyGUI extends AnchorPane implements Observer {
                     if (hra.konecHry()) { return; }
                     main.getCenterText().appendText ("\n\n");
                     main.getCenterText().appendText(hra.zpracujPrikaz("jdi " + prostor.getNazev()));
-                    
-//                    if (hra.getHerniPlan().getAktualniProstor().getNazev().equals(prostor.getNazev())) {
-//
-//                        if (hra.getHerniPlan().getAktualniProstor().getNazev().equals("zeme") && hra.getHerniPlan().getRaketa().jePlna()) {
-//
-//                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//                            alert.setTitle("Informace");
-//                            alert.setHeaderText("Konec hry");
-//                            alert.setContentText("Vyhrál jsi! Doletěl jsi na Zemi se 3mi mimozemštany na palubě!");
-//
-//                            alert.showAndWait();
-//                        }
-//                    }
-
-                                            
                 }
             });
         }
@@ -119,7 +104,9 @@ public class VychodyGUI extends AnchorPane implements Observer {
     public void novaHra(IHra hra) {
 
         hra.getHerniPlan().deleteObserver(this);
+        
         this.hra = hra;
+        
         hra.getHerniPlan().registerObserver(this);
         update();
     }

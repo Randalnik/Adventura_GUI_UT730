@@ -40,7 +40,7 @@ public class MenuPole extends MenuBar{
         itemNovaHra.setAccelerator(KeyCombination.keyCombination("Ctrl+N"));
         
         MenuItem itemKonec = new MenuItem("Konec");
-        itemKonec.setAccelerator(KeyCombination.keyCombination("Ctrl+X"));
+        itemKonec.setAccelerator(KeyCombination.keyCombination("Ctrl+K"));
         
         
         Menu menuHelp = new Menu("Help");
@@ -59,8 +59,8 @@ public class MenuPole extends MenuBar{
             public void handle(ActionEvent event) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("O Adventuře");
-                alert.setHeaderText("Tuto adventuru vytvořil Jakub Skála");
-                alert.setContentText("Grafická verze adventury");
+                alert.setHeaderText("Tuto adventuru vytvořil Jakub Skála (ska06)");
+                alert.setContentText("Grafická verze adventury vytvořená v roce 2017");
                 alert.initOwner(main.getPrimaryStage());
                 alert.showAndWait();
             }

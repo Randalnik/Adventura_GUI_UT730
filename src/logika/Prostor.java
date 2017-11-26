@@ -1,5 +1,6 @@
 package logika;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Set;
@@ -8,6 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Map;
 import java.util.HashMap;
+import utils.Subject;
 
 /**
  *
@@ -18,7 +20,7 @@ import java.util.HashMap;
  * @author    Jakub Skála (skaj06)
  * @version   ZS 2016/2017
  */
-public class Prostor {
+public class Prostor  implements Subject{
 
     private String nazev;
     private String popis;
@@ -27,6 +29,8 @@ public class Prostor {
     private Map<String, Postava> postavy;
     private double posX;
     private double posY;
+    
+    private List<utils.Observer> listObservers;
     
 
     /**
@@ -45,6 +49,7 @@ public class Prostor {
         vychody = new HashSet<>();
         veci = new HashMap<>();
         postavy = new HashMap<>();
+        listObservers = new ArrayList<>();
     }
 
     /**
@@ -226,6 +231,7 @@ public class Prostor {
      */
     public void vlozVec(Vec vkladanaVec){
         veci.put(vkladanaVec.getNazev(),vkladanaVec);
+        notifyAllObservers();
     }
     
     /**
@@ -234,7 +240,9 @@ public class Prostor {
      * @param odebíraná věc
      */
     public Vec odeberVec(String nazevOdebiraneVeci){
-        return veci.remove(nazevOdebiraneVeci);
+        Vec odebirana = veci.remove(nazevOdebiraneVeci);
+        notifyAllObservers();
+        return odebirana;
     }
     
     /**
@@ -278,6 +286,10 @@ public class Prostor {
         return this.veci;
     }
     
+    public Map<String, Postava> ziskejPostavy (){
+        return this.postavy;
+    }
+    
     /**
      * @return true/false pro test věci v lokaci
      */
@@ -315,6 +327,21 @@ public class Prostor {
 
     public double getPosY(double posY) {
         return posY;
+    }
+
+    public void registerObserver(utils.Observer observer) {
+        listObservers.add(observer);
+    }
+
+    public void notifyAllObservers() {
+        for (utils.Observer listObserver : listObservers) {
+            listObserver.update();
+        }
+    }
+
+    @Override
+    public void deleteObserver(utils.Observer observer) {
+        listObservers.remove(observer);
     }
     
 }

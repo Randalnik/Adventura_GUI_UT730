@@ -141,9 +141,9 @@ public class Vec
     
     public void setImg(Image img){
         this.img = img;
-       }
+    }
     
-        public Image getImg() {
+    public Image getImg() {
         return img;
     }
         

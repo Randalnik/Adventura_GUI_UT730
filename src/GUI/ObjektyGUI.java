@@ -27,11 +27,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import logika.Prostor;
 
 /*******************************************************************************
  * Instance třídy {@code ProstorUI} představují ...
  *
- * @author    Jiří Zahálka
+ * @author    Jakub Skála
  * @version   1.0
  */
 public class ObjektyGUI extends AnchorPane implements Observer {
@@ -43,6 +44,7 @@ public class ObjektyGUI extends AnchorPane implements Observer {
 
     private VBox vbox;
     private Main main;
+    private Map<String, Prostor> prostory;
 
     /**
     *  Konstruktor třídy
@@ -55,6 +57,13 @@ public class ObjektyGUI extends AnchorPane implements Observer {
         this.main = main;
         hra.getHerniPlan().registerObserver(this);
         hra.getHerniPlan().getBatoh().registerObserver(this);
+        
+        prostory = hra.getHerniPlan().getProstory();
+        
+        for (String nazev : prostory.keySet()) {
+            Prostor prostor = prostory.get(nazev);
+            prostor.registerObserver(this);
+        }
 
          // Vbox
         vbox = new VBox();
@@ -63,7 +72,7 @@ public class ObjektyGUI extends AnchorPane implements Observer {
         vbox.setMinWidth(275);
 
         // Label
-        Label zadejPrikazLabel = new Label("Objekty v prostoru");
+        Label zadejPrikazLabel = new Label("Objekty v prostoru:");
         zadejPrikazLabel.setFont(Font.font("Arial", FontWeight.BOLD, 16));
     
         vbox.getChildren().add(zadejPrikazLabel);
@@ -87,39 +96,41 @@ public class ObjektyGUI extends AnchorPane implements Observer {
         
         int i = 0;
         
-        for (Vec objekt : veci.values()) {
-            
-            String soubor = objekt.muzuZvednout()? "/zdroje/klic.png" : "/zdroje/voda.png";
+        for (String polozka : veci.keySet()) {
+            Vec vec = veci.get(polozka);
+                        
+            boolean jdeZvednout = vec.muzuZvednout();
             
             HBox hbox = new HBox();
             hbox.setPadding(new Insets(0));
             hbox.setSpacing(10);
             hbox.setMinWidth(275);
         
-            ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream(soubor), 75, 75, false, false));
+            ImageView obrazek = new ImageView(vec.getImg());
             
             double top = i * 75;
             this.setTopAnchor(obrazek, top);            
-
-            Button btn = new Button("Seber");
-            Button hled = new Button ("Prohledej");
             
+            Button hled = new Button ("Prohledej");
+            Button btn = new Button("Seber");
+                
+            //btn = new Button("Seber");
+
             btn.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
 
                     if (hra.konecHry()) { return; }
                     main.getCenterText().appendText ("\n\n");
-                    main.getCenterText().appendText(hra.zpracujPrikaz("seber " + objekt.getNazev()));      
-                    
-                    
-                    if (!hra.getHerniPlan().getBatoh().getSeznamVeci().containsValue(objekt)) {
-                     
+                    main.getCenterText().appendText(hra.zpracujPrikaz("seber " + vec.getNazev()));      
+
+                    if (!hra.getHerniPlan().getBatoh().getSeznamVeci().containsValue(vec)) {
+
                         Alert alert = new Alert(AlertType.INFORMATION);
                         alert.setTitle("Informace");
                         alert.setHeaderText("Tento objekt nelze přidat");
                         alert.setContentText("Tento objekt není přenositelný");
-                        
+
                         alert.showAndWait();
                     }
                 }
@@ -131,25 +142,31 @@ public class ObjektyGUI extends AnchorPane implements Observer {
 
                     if (hra.konecHry()) { return; }
                     main.getCenterText().appendText ("\n\n");
-                    main.getCenterText().appendText(hra.zpracujPrikaz("prohledej " + objekt.getNazev()));      
+                    main.getCenterText().appendText(hra.zpracujPrikaz("prohledej " + vec.getNazev()));      
                     
                     
-                    if (!hra.getHerniPlan().getBatoh().getSeznamVeci().containsValue(objekt)) {
-                     
-                        Alert alert = new Alert(AlertType.INFORMATION);
-                        alert.setTitle("Informace");
-                        alert.setHeaderText("Tento objekt nelze prohledat.");
-                        alert.setContentText("Tento objekt není možné prohledat.");
-                        
-                        alert.showAndWait();
-                    }
+//                    if (!hra.getHerniPlan().getBatoh().getSeznamVeci().containsValue(vec)) {
+//                     
+//                        Alert alert = new Alert(AlertType.INFORMATION);
+//                        alert.setTitle("Informace");
+//                        alert.setHeaderText("Tento objekt nelze prohledat.");
+//                        alert.setContentText("Tento objekt není možné prohledat.");
+//                        
+//                        alert.showAndWait();
+//                    }
                 }
             });
-
-            hbox.getChildren().addAll(obrazek, btn, hled);
-            radky.add(hbox);
             
+            if(jdeZvednout){
+                hbox.getChildren().addAll(obrazek, btn, hled);
+            }
+            else{
+                hbox.getChildren().addAll(obrazek, hled);
+            }
+            
+            radky.add(hbox);
             i++;
+            
         }
         
         vbox.getChildren().addAll(radky);

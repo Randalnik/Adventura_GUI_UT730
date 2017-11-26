@@ -18,7 +18,6 @@ public class Batoh implements Subject
     private int objemBatohu;
     
     private List<utils.Observer> listObservers = new ArrayList<> ();
-    //== Konstruktory a tovární metody =============================================
 
     /***************************************************************************
      *  Konstruktor ....

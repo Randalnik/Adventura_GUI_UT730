@@ -10,6 +10,7 @@ import GUI.MapaGUI;
 import GUI.BatohGUI;
 import GUI.VychodyGUI;
 import GUI.ObjektyGUI;
+import GUI.OsobyGUI;
 
 
 import javafx.application.Application;
@@ -33,9 +34,7 @@ import javafx.stage.Stage;
 
 import uiText.*;
 import logika.*;
-import static javafx.application.Application.launch;
 import javafx.geometry.Orientation;
-import static javafx.application.Application.launch;
 import static javafx.application.Application.launch;
 
 /**
@@ -54,6 +53,7 @@ public class Main extends Application {
     private BatohGUI obsahBatoh;
     private VychodyGUI vychody;
     private ObjektyGUI objekty;
+    private OsobyGUI osoby;
     
     public TextArea getCenterText() {
         return centerText;
@@ -70,6 +70,7 @@ public class Main extends Application {
         vychody = new VychodyGUI(hra, this);
         obsahBatoh = new BatohGUI(hra, this);
         objekty = new ObjektyGUI(hra, this);
+        osoby = new OsobyGUI(hra, this);
         
         BorderPane borderPane = new BorderPane();
         
@@ -116,7 +117,7 @@ public class Main extends Application {
         borderPane.setTop(menu);
         // batoh s obsahem
         FlowPane pravyPanel = new FlowPane(Orientation.VERTICAL);
-        pravyPanel.getChildren().addAll(objekty, obsahBatoh, vychody);
+        pravyPanel.getChildren().addAll(objekty, osoby, obsahBatoh, vychody);
         
         borderPane.setRight(pravyPanel);
         
@@ -152,11 +153,13 @@ public class Main extends Application {
     public void novaHra() {
         hra = new Hra();
         centerText.setText(hra.vratUvitani());
+        
         //to same pro vsechny observery
         mapa.novaHra(hra);
         objekty.novaHra(hra);
         obsahBatoh.novaHra(hra);
         vychody.novaHra(hra);
+        osoby.novaHra(hra);
     }
 
     /**
