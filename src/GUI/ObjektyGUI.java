@@ -29,7 +29,7 @@ import javafx.scene.text.FontWeight;
 import logika.Prostor;
 
 /*******************************************************************************
- *
+ * Instance třídy ObjektyGUI představují...
  * @author    Jakub Skála
  * @version   1.0
  */
@@ -48,6 +48,7 @@ public class ObjektyGUI extends AnchorPane implements Observer {
     *  Konstruktor třídy
     *  
     *  @param hra hra, která obsahuje objekty celé adventury, které se dále z této třídy volají
+    *  @param main main, který obsahuje borderPane, na který se zobrazují předměty a text z interakce
     */   
     public ObjektyGUI(IHra hra, Main main) {
         
@@ -155,6 +156,7 @@ public class ObjektyGUI extends AnchorPane implements Observer {
                 }
             });
             
+            // na základě hodnoty jdeZvednout se generují tlačítka
             if(jdeZvednout){
                 hbox.getChildren().addAll(obrazek, btn); 
             }

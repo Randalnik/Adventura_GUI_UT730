@@ -34,8 +34,8 @@ import javafx.geometry.Orientation;
 import static javafx.application.Application.launch;
 
 /**
- *
- * @author xzenj02
+ * Instance třídy Main představuje...
+ * @author xzenj02, přepracoval a použil Jakub Skála (skaj06)
  */
 public class Main extends Application {
 
@@ -54,7 +54,11 @@ public class Main extends Application {
     public TextArea getCenterText() {
         return centerText;
     }
-       
+    
+    /**
+     * Vytvoří vše potřebné pro hraní hry
+     * @param primaryStage 
+     */
     @Override
     public void start(Stage primaryStage) {
         hra = new Hra();
@@ -73,7 +77,7 @@ public class Main extends Application {
         centerText = new TextArea();
         centerText.setText(hra.vratUvitani());
         centerText.setEditable(false);
-        centerText.setMinWidth(100); //upravení šířky hlavního textové pole
+        centerText.setMinWidth(100); 
         borderPane.setCenter(centerText);
         
         
@@ -120,7 +124,7 @@ public class Main extends Application {
         borderPane.setRight(pravyPanel);
         
         
-        // BASE SCENE
+        // základní scéna
         Scene scene = new Scene(borderPane, 1300,620);
 
         primaryStage.setTitle("Adventura - Přežij Ostrov!");
@@ -147,7 +151,10 @@ public class Main extends Application {
             }
         }
     }
-
+    
+    /**
+     * Při zavolání metody novaHra se zavolá stejná metoda i v jednotlivých třídách, vznikne nová hra
+     */
     public void novaHra() {
         hra = new Hra();
         centerText.setText(hra.vratUvitani());
@@ -167,6 +174,10 @@ public class Main extends Application {
         return primaryStage;
     }
     
+    /**
+     * 
+     * @return obsahBatohu 
+     */
     public BatohGUI getPravaStrana(){
         return obsahBatoh;
     }

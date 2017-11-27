@@ -23,7 +23,7 @@ import javafx.scene.text.FontWeight;
 import main.Main;
 
 /*******************************************************************************
- *
+ * Instance třídy VychodyGUI představují...
  * @author    Jakub Skála
  * @version   1.0
  */
@@ -39,6 +39,7 @@ public class VychodyGUI extends AnchorPane implements Observer {
     *  Konstruktor třídy
     *  
     *  @param hra hra, která obsahuje objekty celé adventury, které se dále z této třídy volají
+    *  @param main main, který obsahuje borderPane, na který se zobrazují předměty a text z interakce
     */   
     public VychodyGUI(IHra hra, Main main) {
         

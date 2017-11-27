@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 
 
 /**
- *
- * @author xzenj02
+ * Instance třídy MenuPole představují...
+ * @author xzenj02 přepracoval a použij Jakub Skála (skaj06)
  */
 public class MenuPole extends MenuBar{
     
@@ -30,6 +30,9 @@ public class MenuPole extends MenuBar{
         init();
     }
     
+    /**
+     * Představuje obsah horního panelu (jednolivá tlačítka)
+     */
     private void init(){
         Menu menuSoubor = new Menu("Adventura");
         

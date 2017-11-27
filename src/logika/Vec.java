@@ -103,46 +103,90 @@ public class Vec
         return vecZiskanaPouzitim;
     }  
     
+    /**
+     * 
+     * @param jeCitelna 
+     */
     public void setJeCitelna(boolean jeCitelna) {
         this.jeCitelna = jeCitelna;
     }
     
+    /**
+     * 
+     * @param nazev 
+     */
     public void setNazev(String nazev) {
         this.nazev = nazev;
     }
     
+    /**
+     * 
+     * @param prostorPouziti 
+     */
     public void setProstorPouziti(Prostor prostorPouziti) {
         this.prostorPouziti = prostorPouziti;
     }
     
+    /**
+     * 
+     * @param muzuZvednout 
+     */
     public void setMuzuZvednout(boolean muzuZvednout) {
         this.muzuZvednout = muzuZvednout;
     }
     
+    /**
+     * 
+     * @param jePouzitelna 
+     */
     public void setJePouzitelna(boolean jePouzitelna) {
         this.jePouzitelna = jePouzitelna;
     }
     
+    /**
+     * 
+     * @param jeProhledatelna 
+     */
     public void setJeProhledatelna(boolean jeProhledatelna) {
         this.jeProhledatelna = jeProhledatelna;
     }
     
+    /**
+     * 
+     * @param vecPouziti 
+     */
     public void setVecPouziti(Vec vecPouziti) {
         this.vecPouziti = vecPouziti;
     }
     
+    /**
+     * 
+     * @param vecZiskanaProhledanim 
+     */
     public void setVecZiskanaProhledanim(Vec vecZiskanaProhledanim) {
         this.vecZiskanaProhledanim = vecZiskanaProhledanim;
     }
     
+    /**
+     * 
+     * @param vecZiskanaPouzitim 
+     */
     public void setVecZiskanaPouzitim(Vec vecZiskanaPouzitim) {
         this.vecZiskanaPouzitim = vecZiskanaPouzitim;
     }
     
+    /**
+     * 
+     * @param img 
+     */
     public void setImg(Image img){
         this.img = img;
     }
     
+    /**
+     * 
+     * @return img
+     */
     public Image getImg() {
         return img;
     }

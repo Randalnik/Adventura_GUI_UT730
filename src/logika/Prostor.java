@@ -40,8 +40,10 @@ public class Prostor  implements Subject{
      * @param nazev nazev prostoru, jednoznačný identifikátor, jedno slovo nebo
      * víceslovný název bez mezer.
      * @param popis Popis prostoru.
+     * @param posX určuje X souřadnici.
+     * @param posY určuje Y souřadnici.
      */
-    public Prostor(String nazev, String popis, double posX, double posY) { // ÚPRAVA
+    public Prostor(String nazev, String popis, double posX, double posY) { 
         this.nazev = nazev;
         this.popis = popis;
         this.posX = posX;
@@ -282,10 +284,18 @@ public class Prostor  implements Subject{
            return hledanaVec;
     }  
     
+    /**
+     * vrátí seznam věcí
+     * @return veci 
+     */
     public Map<String, Vec> ziskejVeci () {
         return this.veci;
     }
     
+    /**
+     * vrátí seznam postav
+     * @return psotavy
+     */
     public Map<String, Postava> ziskejPostavy (){
         return this.postavy;
     }
@@ -304,31 +314,60 @@ public class Prostor  implements Subject{
         return navratExistenci;
     }
 
+    /**
+     * 
+     * @return posY
+     */
     public Double getPosY() {
         return posY;
     }
 
+    /**
+     * 
+     * @return posX
+     */
     public Double getPosX() {
         return posX;
     }
     
-        // GETRY,SETRY
+    /**
+     * 
+     * @param posX 
+     */
     public void setPosX(double posX) {
         this.posX = posX;
     }
 
+    /**
+     * 
+     * @param posY 
+     */
     public void setPosY(double posY) {
         this.posY = posY;
     }
 
+    /**
+     * 
+     * @param posX
+     * @return 
+     */
     public double getPosX(double posX) {
         return posX;
     }
 
+    /**
+     * 
+     * @param posY
+     * @return 
+     */
     public double getPosY(double posY) {
         return posY;
     }
 
+    /**
+     * 
+     * @param observer 
+     */
     public void registerObserver(utils.Observer observer) {
         listObservers.add(observer);
     }
@@ -339,6 +378,10 @@ public class Prostor  implements Subject{
         }
     }
 
+    /**
+     * 
+     * @param observer 
+     */
     @Override
     public void deleteObserver(utils.Observer observer) {
         listObservers.remove(observer);

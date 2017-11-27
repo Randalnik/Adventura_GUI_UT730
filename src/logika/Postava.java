@@ -30,8 +30,8 @@ public class Postava
     }
     
     /**
-     * 
-     * @return 
+     * Vrací image.
+     * @return image
      */
     public Image getImage() {
         return image;
@@ -60,6 +60,10 @@ public class Postava
         return popis;
     }
     
+    /**
+     * 
+     * @param popis 
+     */
     public void setPopis(String popis){
         this.popis = popis;
     }

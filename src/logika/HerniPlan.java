@@ -53,11 +53,11 @@ public class HerniPlan implements Subject{
      */
     private void zalozProstoryHry() {
         // vytvářejí se jednotlivé prostory
-        Prostor jeskyne = new Prostor("Jeskyně","Chladná jeskyně,taková, ve které by ani naši předci z pravěku nepřežili. Jako bonus do ní dopadá pár slunečních paprsků skrze východ do neznáma.", 30, 46);
-        Prostor vesnice = new Prostor("Domorodá vesnice", "Tak přesně takovou vesnici znáš z každého hororového filmu, určitě si ji chceš prohlédnout.", 32, 125);
-        Prostor vodopad = new Prostor("Vodopád s jezírkem","Poklidný vodopád s jezírkem, ve kterém však žije místní hrozba.", 265, 55);
-        Prostor jungle = new Prostor("Hustá džungle","Není to klasický les, je to hustá a skoro nepropustná jungle ve které se nachází i kus rotoru... Jen na něm sedí obrovský pavouk!", 179, 200);
-        Prostor plaz = new Prostor("Písečná pláž","Pláž skoro jak v Miami, akorát místo slunečníků a drinků tu na tebe čekají jiná překvapení.", 100, 266); //je to pláž
+        Prostor jeskyne = new Prostor("Jeskyně","Chladná jeskyně,taková, ve které by ani naši předci z pravěku nepřežili. Jako bonus do ní dopadá pár slunečních paprsků skrze východ do neznáma.", 30, 90);
+        Prostor vesnice = new Prostor("Domorodá vesnice", "Tak přesně takovou vesnici znáš z každého hororového filmu, určitě si ji chceš prohlédnout.", 32, 200);
+        Prostor vodopad = new Prostor("Vodopád s jezírkem","Poklidný vodopád s jezírkem, ve kterém však žije místní hrozba.", 265, 90);
+        Prostor jungle = new Prostor("Hustá džungle","Není to klasický les, je to hustá a skoro nepropustná jungle ve které se nachází i kus rotoru... Jen na něm sedí obrovský pavouk!", 179, 350);
+        Prostor plaz = new Prostor("Písečná pláž","Pláž skoro jak v Miami, akorát místo slunečníků a drinků tu na tebe čekají jiná překvapení.", 100, 450); //je to pláž
         
         prostory.put("jeskyne", jeskyne);
         prostory.put("vesnice", vesnice);
@@ -253,16 +253,27 @@ public class HerniPlan implements Subject{
         return batoh;
     }
     
+    /**
+     * Zaregistuje nový observer
+     * @param observer 
+     */
     @Override
     public void registerObserver(Observer observer) {
         listObservers.add(observer);
     }
-
+    
+    /**
+     * Smaže daný observer
+     * @param observer 
+     */
     @Override
     public void deleteObserver(Observer observer) {
         listObservers.remove(observer);
     }
-
+    
+    /**
+     * Upozorní všechny observery
+     */
     @Override
     public void notifyAllObservers() {
         for (Observer listObserver : listObservers) {

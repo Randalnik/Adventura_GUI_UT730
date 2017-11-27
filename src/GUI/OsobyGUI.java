@@ -28,7 +28,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
 /*******************************************************************************
- *
+ * Instance třídy OsobyGUI představují...
  * @author    Jakub Skála
  * @version   1.0
  */
@@ -46,6 +46,7 @@ public class OsobyGUI extends AnchorPane implements Observer {
     *  Konstruktor třídy
     *  
     *  @param hra hra, která obsahuje objekty celé adventury, které se dále z této třídy volají
+    *  @param main main, který obsahuje borderPane, na který se zobrazují osoby a text z interakce
     */   
     public OsobyGUI(IHra hra, Main main) {
         

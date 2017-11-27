@@ -36,7 +36,10 @@ public class Batoh implements Subject
     public int  velikostBatohu(){
         return batoh.size();
     }
-    
+    /**
+     * vrací maximální velikost batohu (6)
+     * @return objemBatohu 
+     */
     public int getObjemBatohu (){
         return this.objemBatohu;
     }
@@ -106,21 +109,33 @@ public class Batoh implements Subject
         }
         return vracenyText;
     }
-    
+    /**
+     * Vrací seznam věcí batohu
+     * 
+     * @return batoh
+     */
     public Map<String, Vec> getSeznamVeci(){
         return batoh;
     }
-
+    /**
+     * Zaregistuje nový observer
+     * @param observer 
+     */
     public void registerObserver(utils.Observer observer) {
         listObservers.add(observer);
     }
-
+    /**
+     * Upozorní všechny observery
+     */
     public void notifyAllObservers() {
         for (utils.Observer listObserver : listObservers) {
             listObserver.update();
         }
     }
-
+    /**
+     * Smaže daný observer
+     * @param observer 
+     */
     @Override
     public void deleteObserver(utils.Observer observer) {
         listObservers.remove(observer);

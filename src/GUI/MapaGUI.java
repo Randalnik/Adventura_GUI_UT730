@@ -15,7 +15,7 @@ import main.Main;
 import utils.Observer;
 
 /*******************************************************************************
- *
+ * Instance třídy MapaGUI představují...
  * @author    Jakub Skála
  * @version   1.0
  */
@@ -30,6 +30,7 @@ public class MapaGUI extends AnchorPane implements Observer{
         init();
     }
     
+    // vrací @param obrazek s teckou
     private void init(){
         ImageView obrazek = new ImageView(new Image(Main.class.getResourceAsStream("/zdroje/mapa.png"),300,500,false,false));
         tecka = new Circle(10, Paint.valueOf("red"));
@@ -49,6 +50,7 @@ public class MapaGUI extends AnchorPane implements Observer{
 //        alert.showAndWait();
 //    }
     
+    // aktualizuje polohu tečky na mapě dle aktuální lokace
     @Override
     public void update() {
         this.setTopAnchor(tecka, hra.getHerniPlan().getAktualniProstor().getPosY());
@@ -57,6 +59,7 @@ public class MapaGUI extends AnchorPane implements Observer{
 //        show();
     }
     
+    // při zavolání metody novaHra se zaregistruje nový observer a tecka se vrátí na startovní pozici
     public void novaHra(IHra hra) {
         hra.getHerniPlan().deleteObserver(this);
         this.hra = hra;

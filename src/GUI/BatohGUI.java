@@ -28,7 +28,7 @@ import javafx.scene.text.FontWeight;
 
 
 /*******************************************************************************
- *
+ * Instance třídy BatohGUI představují...
  * @author    Jakub Skála
  * @version   1.0
  */
@@ -45,6 +45,7 @@ public class BatohGUI extends AnchorPane implements Observer {
     *  Konstruktor třídy
     *  
     *  @param hra hra, která obsahuje objekty celé adventury, které se dále z této třídy volají
+    *  @param main main, který obsahuje borderPane, na který se zobrazují předměty a text z interakce
     */   
     public BatohGUI (IHra hra, Main main) {
         
@@ -131,6 +132,7 @@ public class BatohGUI extends AnchorPane implements Observer {
                 }
             });
             
+            // podle čitelnosti předmětu se předmětu přiřazují tlačítka
             if (jeCitelna) {
                 hbox.getChildren().addAll(obrazek, btn, btn1);
             }
